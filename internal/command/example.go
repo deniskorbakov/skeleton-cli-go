@@ -18,7 +18,7 @@ var buildCmd = &cobra.Command{
 			return err
 		}
 
-		output.Green("Success green output: ", fields.RemoteUser)
+		output.Green("Success green output: ", fields.ExampleInput)
 		output.Red("This command will be run successfully")
 
 		return nil
