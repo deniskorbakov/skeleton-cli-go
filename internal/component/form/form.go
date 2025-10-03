@@ -2,17 +2,16 @@ package form
 
 import "github.com/charmbracelet/huh"
 
-// Run Main function that runs an interactive form to collect SSH connection details
+// Run Main function that runs an interactive form
 func Run() (*Fields, error) {
 	fields := &Fields{}
 
 	err := huh.NewForm(
 		huh.NewGroup(
 			huh.NewInput().
-				Title("Repository").
-				Description("Url git repository").
-				Validate(validateRepository).
-				Value(&fields.RepositoryUrl),
+				Title("Example Title").
+				Description("Example description input").
+				Value(&fields.ExampleInput),
 		),
 	).WithShowHelp(true).Run()
 	if err != nil {
