@@ -1,0 +1,90 @@
+version: 2
+
+env:
+  - GO111MODULE=on
+
+project_name: cli
+
+before:
+  hooks:
+    - go mod tidy
+    - ./scripts/manpages.sh
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    ldflags:
+      - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+    goos:
+      - linux
+      - darwin
+    main: ./cmd/cli
+
+archives:
+  - name_template: >-
+      {{- .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end -}}
+    builds_info:
+      group: root
+      owner: root
+      mtime: "{{ .CommitDate }}"
+    files:
+      - src: README.md
+        info:
+          owner: root
+          group: root
+          mtime: "{{ .CommitDate }}"
+      - src: LICENSE
+        info:
+          owner: root
+          group: root
+          mtime: "{{ .CommitDate }}"
+      - src: manpages/*
+        info:
+          owner: root
+          group: root
+          mtime: "{{ .CommitDate }}"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+
+release:
+  draft: true
+  prerelease: auto
+  name_template: "Cli {{.Version}}"
+
+nfpms:
+  - package_name: cli
+    file_name_template: "{{ .ConventionalFileName }}"
+    id: packages
+    description: |-
+      Cli - example cmd
+    maintainer: Denis Korbakov <korbakovd009@gmail.com>
+    license: MIT
+    vendor: Deniskorbakov
+    bindir: /usr/bin
+    section: utils
+    mtime: "{{ .CommitDate }}"
+    formats:
+      - apk
+      - deb
+      - rpm
+      - archlinux
+    dependencies:
+      - git
+    overrides:
+      deb:
+        suggests:
+          - ssh
+    deb:
+      lintian_overrides:
+        - statically-linked-binary
+        - changelog-file-missing-in-native-package
