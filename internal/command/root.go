@@ -24,7 +24,7 @@ func Run() {
 
 	// Add all command in your app
 	cmd.AddCommand(
-		buildCmd,
+		exampleCmd,
 	)
 
 	if err := fang.Execute(

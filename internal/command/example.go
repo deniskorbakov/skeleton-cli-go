@@ -7,8 +7,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// buildCmd Command for build pipeline
-var buildCmd = &cobra.Command{
+// exampleCmd Command for build pipeline
+var exampleCmd = &cobra.Command{
 	Use:   constname.UseExampleCmd,
 	Short: constname.UseExampleCmd,
 	Long:  constname.LongExampleCmd,
