@@ -100,6 +100,10 @@ You can add or change team data in this space
 
 ### 🗯️ Components
 
+The components use [huh](https://github.com/charmbracelet/huh)
+
+<img alt="Running a burger form" width="600" src="https://vhs.charm.sh/vhs-3J4i6HE3yBmz6SUO3HqILr.gif">
+
 The components in the application are located here - `internal/component`
 
 These components can be either a form or a separate element of it - further logic depends on your needs
