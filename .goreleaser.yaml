@@ -17,7 +17,7 @@ builds:
     goos:
       - linux
       - darwin
-    main: ./cmd/{{.ProjectName}}
+    main: "./cmd/{{ .ProjectName }}"
 
 archives:
   - name_template: >-
@@ -44,11 +44,10 @@ archives:
           mtime: "{{ .CommitDate }}"
 
 nfpms:
-  - package_name: {{.ProjectName}}
+  - package_name: "{{ .ProjectName }}"
     file_name_template: "{{ .ConventionalFileName }}"
     id: packages
-    description: |-
-      {{.ProjectName}} - example description
+    description: "{{.ProjectName}} example description"
     maintainer: Denis Korbakov <korbakovd009@gmail.com>
     license: MIT
     vendor: Deniskorbakov
