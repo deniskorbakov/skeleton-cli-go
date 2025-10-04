@@ -17,7 +17,19 @@ Made using data from packages:
 
 ## 📖 Examples & Usage
 
-## 🏛️ Architecture
+## Replace
+
+### Cmd
+
+### Configs
+
+### Components
+
+### Version
+
+### Release
+
+### Lint
 
 ## 🤝 Feedback
 
