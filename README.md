@@ -13,6 +13,10 @@ Made using data from packages:
 * [Fang](http://github.com/charmbracelet/fang) - The CLI starter kit
 * [Huh](https://github.com/charmbracelet/huh) - A simple interactive forms and prompts in the terminal
 
+What do you get:
+
+![screen](.assets/screen.png)
+
 ## ✨ Install
 
 clone the repository
