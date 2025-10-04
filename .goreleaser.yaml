@@ -43,7 +43,31 @@ archives:
           group: root
           mtime: "{{ .CommitDate }}"
 
+nfpms:
+  - package_name: {{.ProjectName}}
+    file_name_template: "{{ .ConventionalFileName }}"
+    id: packages
+    description: |-
+      {{.ProjectName}} - example description
+    maintainer: Denis Korbakov <korbakovd009@gmail.com>
+    license: MIT
+    vendor: Deniskorbakov
+    bindir: /usr/bin
+    section: utils
+    mtime: "{{ .CommitDate }}"
+    formats:
+      - apk
+      - deb
+      - rpm
+      - archlinux
+    dependencies:
+      - git
+    deb:
+      lintian_overrides:
+        - statically-linked-binary
+        - changelog-file-missing-in-native-package
+
 release:
   draft: true
   prerelease: auto
-  name_template: "Cli {{.Version}}"
+  name_template: "{{.Version}}"
