@@ -8,7 +8,6 @@ project_name: cli
 before:
   hooks:
     - go mod tidy
-    - ./scripts/manpages.sh
 
 builds:
   - env:
@@ -18,7 +17,7 @@ builds:
     goos:
       - linux
       - darwin
-    main: ./cmd/cli
+    main: ./cmd/{{.ProjectName}}
 
 archives:
   - name_template: >-
@@ -43,48 +42,8 @@ archives:
           owner: root
           group: root
           mtime: "{{ .CommitDate }}"
-      - src: manpages/*
-        info:
-          owner: root
-          group: root
-          mtime: "{{ .CommitDate }}"
-
-changelog:
-  sort: asc
-  filters:
-    exclude:
-      - "^docs:"
-      - "^test:"
 
 release:
   draft: true
   prerelease: auto
   name_template: "Cli {{.Version}}"
-
-nfpms:
-  - package_name: cli
-    file_name_template: "{{ .ConventionalFileName }}"
-    id: packages
-    description: |-
-      Cli - example cmd
-    maintainer: Denis Korbakov <korbakovd009@gmail.com>
-    license: MIT
-    vendor: Deniskorbakov
-    bindir: /usr/bin
-    section: utils
-    mtime: "{{ .CommitDate }}"
-    formats:
-      - apk
-      - deb
-      - rpm
-      - archlinux
-    dependencies:
-      - git
-    overrides:
-      deb:
-        suggests:
-          - ssh
-    deb:
-      lintian_overrides:
-        - statically-linked-binary
-        - changelog-file-missing-in-native-package
