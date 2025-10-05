@@ -1,6 +1,6 @@
 package form
 
-// Fields A struct that form build repo
+// Fields struct for huh form
 type Fields struct {
 	ExampleInput string
 }
