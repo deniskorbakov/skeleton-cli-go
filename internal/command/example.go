@@ -10,7 +10,7 @@ import (
 // exampleCmd Command for build pipeline
 var exampleCmd = &cobra.Command{
 	Use:   constname.UseExampleCmd,
-	Short: constname.UseExampleCmd,
+	Short: constname.ShortExampleCmd,
 	Long:  constname.LongExampleCmd,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fields, err := form.Run()
