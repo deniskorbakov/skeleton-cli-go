@@ -3,7 +3,7 @@ module github.com/deniskorbakov/skeleton-cli-go
 go 1.25
 
 require (
-	github.com/charmbracelet/fang v0.4.3
+	github.com/charmbracelet/fang/v2 v2.0.0
 	github.com/charmbracelet/huh v1.0.0
 	github.com/charmbracelet/lipgloss/v2 v2.0.0-beta1
 	github.com/spf13/cobra v1.10.2
